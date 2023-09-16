@@ -17,14 +17,25 @@ namespace InterpreterPatternDemo
     /// </summary>
     public class NumberExpression : IEvaluator
     {
+        /// <summary>
+        /// Terminal expression, input long value
+        /// </summary>
         private readonly long _number;
 
+        /// <summary>
+        /// Constructor that stores the terminal value
+        /// </summary>
+        /// <param name="number">Number to be stored</param>
         public NumberExpression(long number)
         {
             _number = number;
         }
 
-        public double  Interpret()
+        /// <summary>
+        /// Interprets the object it is called on
+        /// </summary>
+        /// <returns>Value of that expression, the currency value</returns>
+        public double Interpret()
         {
             return _number;
         }
@@ -39,12 +50,28 @@ namespace InterpreterPatternDemo
     /// </exception>
     public class DollarToRupee : IEvaluator
     {
+        /// <summary>
+        /// The variable that stored the non-terminal value
+        /// </summary>
         private readonly IEvaluator _value;
+        /// <summary>
+        /// The exchange rate as on 16/09/2023
+        /// </summary>
         private readonly double _exchange_rate = 83.09;
+
+        /// <summary>
+        /// Constructor that stores the non-terminal value
+        /// </summary>
+        /// <param name="value">Value to be stored</param>
         public DollarToRupee(IEvaluator value)
         {
             _value = value;
         }
+
+        /// <summary>
+        /// Interprets the object it is called on
+        /// </summary>
+        /// <returns>Value of that expression, the currency value</returns>
         public double Interpret()
         {
             double inrRate = 0;
@@ -55,7 +82,7 @@ namespace InterpreterPatternDemo
                     inrRate = _value.Interpret() * _exchange_rate;
                 }
             }
-            catch (OverflowException oex)
+            catch
             {
                 Console.WriteLine("Overflow encountered during conversion to INR");
             }
@@ -73,13 +100,28 @@ namespace InterpreterPatternDemo
     /// </exception>
     public class NLCToRupee : IEvaluator
     {
+        /// <summary>
+        /// The variable that stored the non-terminal value
+        /// </summary>
         private readonly IEvaluator _value;
+        /// <summary>
+        /// The exchange rate as on 16/09/2023
+        /// </summary>
         private readonly double _exchange_rate = 10.5;
+        /// <summary>
+        /// Bias that allows non-linearity
+        /// </summary>
         private readonly double _bias = 13.5;
+
         public NLCToRupee(IEvaluator value)
         {
             _value = value;
         }
+
+        /// <summary>
+        /// Interprets the object it is called on
+        /// </summary>
+        /// <returns>Value of that expression, the currency value</returns>
         public double Interpret()
         {
             double inrRate = 0;
@@ -107,12 +149,23 @@ namespace InterpreterPatternDemo
     /// </exception>
     public class RoubleToRupee : IEvaluator
     {
+        /// <summary>
+        /// The variable that stored the non-terminal value
+        /// </summary>
         private readonly IEvaluator _value;
+        /// <summary>
+        /// The exchange rate as on 16/09/2023
+        /// </summary>
         private readonly double _exchange_rate = 0.86;
         public RoubleToRupee(IEvaluator value)
         {
             _value = value;
         }
+
+        /// <summary>
+        /// Interprets the object it is called on
+        /// </summary>
+        /// <returns>Value of that expression, the currency value</returns>
         public double Interpret()
         {
             double inrRate = 0;

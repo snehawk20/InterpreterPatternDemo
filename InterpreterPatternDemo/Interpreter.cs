@@ -18,6 +18,14 @@ namespace InterpreterPatternDemo
     /// </summary>
     public static class Interpreter
     {
+        /// <summary>
+        /// Converts 
+        /// </summary>
+        /// <param name="expression">String input received from user</param>
+        /// <returns>Currency value in INR</returns>
+        /// <exception cref="Exception">If the input is not in the specified format
+        /// "Value Currency" or "Currency Value", raise an exception
+        /// </exception>
         public static double Convert(string expression)
         {
             // Split the input string based on spaces
