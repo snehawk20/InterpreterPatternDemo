@@ -17,6 +17,6 @@ The tokens in the string must be space separated.
 3. Invalid input exception is handled
 
 ## Class Diagram
-![Class Diagram](https://github.com/snehawk20/InterpreterPatternDemo/)
+![Class Diagram](https://github.com/snehawk20/InterpreterPatternDemo/Images/ClassDiagram.jpg)
 ## Environment
 The project builds and runs with Visual Studio Community 2022 when the required workloads are installed.
